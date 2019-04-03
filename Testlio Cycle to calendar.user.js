@@ -14,7 +14,6 @@ if (document.readyState === 'complete') {
 	putCalendar();
 } else {
 	document.onreadystatechange = function () {
-  	alert (document.readyState);
   	if (document.readyState === 'complete') {
     	putCalendar();
 		}
