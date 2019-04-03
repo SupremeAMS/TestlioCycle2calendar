@@ -2,24 +2,28 @@
 // @name        Testlio Cycle to calendar
 // @namespace   SAMS
 // @include     https://platform.testlio.com/c/*
-// @version     1.1
+// @version     1.1.1
 // @grant       none
 // @run-at      document-idle
 // ==/UserScript==
 
 
 
-document.onreadystatechange = function () {
-  if (document.readyState === 'complete') {
-    putCalendar();
-  }
-}
 
+if (document.readyState === 'complete') {
+	putCalendar();
+} else {
+	document.onreadystatechange = function () {
+  	alert (document.readyState);
+  	if (document.readyState === 'complete') {
+    	putCalendar();
+		}
+	}
+}
 
 function putCalendar()
 {
   var ProjectInfos = document.getElementsByClassName('project-header-name');
-
   if (ProjectInfos.length == 1)
   {
     var UserId = document.getElementById('profile-icon-link').getElementsByTagName('img')[0].getAttribute('src').split('/')[4];
@@ -44,7 +48,6 @@ function putCalendar()
       enddate=new Date((enddate.includes(','))?
       enddate.replace(',',' '+currentYear):
       enddate);
-
 
 
       var TestlionCycleInfo = '?';
