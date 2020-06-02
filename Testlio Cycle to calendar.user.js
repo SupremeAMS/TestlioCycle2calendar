@@ -2,23 +2,14 @@
 // @name        Testlio Cycle to calendar
 // @namespace   SAMS
 // @include     https://platform.testlio.com/c/*
-// @version     1.1.1
+// @version     1.2.0
 // @grant       none
 // @run-at      document-idle
 // ==/UserScript==
 
 
-
-
-if (document.readyState === 'complete') {
-	putCalendar();
-} else {
-	document.onreadystatechange = function () {
-  	if (document.readyState === 'complete') {
-    	putCalendar();
-		}
-	}
-}
+var timeoutID;
+timeoutID = setTimeout(putCalendar, 2000);
 
 function putCalendar()
 {
